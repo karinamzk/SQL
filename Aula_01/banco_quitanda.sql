@@ -2,6 +2,8 @@ CREATE DATABASE db_quitanda;
 
 USE db_quitanda;
 
+-- CRIANDO A TABELA PRODUTOS
+
 CREATE TABLE tb_produtos(
 	Id BIGINT IDENTITY(1,1),
 	Nome VARCHAR(255) NOT NULL,
@@ -17,10 +19,14 @@ INSERT INTO tb_produtos
 VALUES
 ('Laranja', 20, '2023-09-18', 8.00);
 
+
+
 INSERT INTO tb_produtos
 (Nome, Quantidade, DataValidade, Preco)
 VALUES
 ('Maçã', 10, '2023-09-18', 15.25);
+
+-- INSERIR DADOS NA TABELA PRODUTOS
 
 INSERT INTO tb_produtos
 (Nome, Quantidade, DataValidade, Preco)
@@ -28,6 +34,7 @@ VALUES
 ('Couve', 35, '2023-09-18', 5.00),
 ('Banana', 25, '2023-09-18', 16.00);
 
+-- SELECIONAR A TABELA PRODUTOS
 
 SELECT * FROM tb_produtos;
 
