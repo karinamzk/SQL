@@ -49,5 +49,9 @@ SELECT * FROM tb_pizzas INNER JOIN tb_categorias
 ON tb_categorias.Id = tb_pizzas.Categoria_id
 WHERE tb_categorias.id = 4;
 
+SELECT nome, Quantidade AS 'Estoque', Preco, tipo, tamanho FROM tb_pizzas INNER JOIN tb_categorias
+ON tb_categorias.Id = tb_pizzas.Categoria_id;
+
 DROP TABLE tb_pizzas;
+
 DROP TABLE tb_categorias;
