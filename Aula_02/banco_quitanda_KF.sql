@@ -62,7 +62,32 @@ CREATE TABLE tb_categorias(
 
 SELECT * FROM tb_categorias;
 
--- Insere dados na tabela tb_categoriasINSERT INTO tb_categorias (Descricao)VALUES ('Frutas');INSERT INTO tb_categorias (Descricao)VALUES ('Verduras');INSERT INTO tb_categorias (Descricao)VALUES ('Legumes');INSERT INTO tb_categorias (Descricao)VALUES ('Temperos');INSERT INTO tb_categorias (Descricao)VALUES ('Ovos');INSERT INTO tb_categorias (Descricao)VALUES ('outros');--APAGAR A TABELA DROP TABLE tb_produtos;-- CRIAR UMA TABELA COM A CHAVE ESTRANGEIRA 'FOREIGN KEY (categoria_id) REFERENCES tb_categorias(id), 'CREATE TABLE tb_produtos(
+-- Insere dados na tabela tb_categorias
+INSERT INTO tb_categorias (Descricao)
+VALUES ('Frutas');
+
+INSERT INTO tb_categorias (Descricao)
+VALUES ('Verduras');
+
+INSERT INTO tb_categorias (Descricao)
+VALUES ('Legumes');
+
+INSERT INTO tb_categorias (Descricao)
+VALUES ('Temperos');
+
+INSERT INTO tb_categorias (Descricao)
+VALUES ('Ovos');
+
+INSERT INTO tb_categorias (Descricao)
+VALUES ('outros');
+
+--APAGAR A TABELA 
+
+DROP TABLE tb_produtos;
+
+-- CRIAR UMA TABELA COM A CHAVE ESTRANGEIRA 'FOREIGN KEY (categoria_id) REFERENCES tb_categorias(id), '
+
+CREATE TABLE tb_produtos(
 	Id BIGINT IDENTITY(1,1),
 	Nome VARCHAR(255) NOT NULL,
 	Quantidade INT,
@@ -85,4 +110,39 @@ VALUES
 
 INSERT INTO tb_produtos
 (Nome, Quantidade, DataValidade, Preco, Categoria_id)
-VALUES ('Maçã', 1000, '2022-03-07', 1.99, 1),('Banana', 1300, '2022-03-08', 5.00, 1),('Batata doce', 2000, '2022-03-09', 10.00, 3),('Alface', 300, '2022-03-10', 7.00, 2),('Cebola', 1020, '2022-03-08', 5.00, 3),('Ovo Branco', 1000, '2022-03-07', 15.00, 5),('Agrião', 1500, '2022-03-06', 3.00, 2),('Cenoura', 1800, '2022-03-09', 3.50, 3),('Pimenta', 1100, '2022-03-15', 10.00, 4),('Alecrim', 130, '2022-03-10', 5.00, 4),('Manga', 200, '2022-03-07', 5.49, 1),('Laranja', 3000, '2022-03-13', 10.00, 1);--RELACIONANDO AS TABELAS SELECT * FROM tb_produtos INNER JOIN tb_categoriasON tb_categorias.Id = tb_produtos.Categoria_id;--RELACIONANDO A TABELA DA ESQUERDA COM O MAIOR PESOSELECT * FROM tb_categorias LEFT JOIN tb_produtosON tb_categorias.Id = tb_produtos.Categoria_id;--INCLUINDO O DADOS NA TABELAINSERT INTO tb_produtos (Nome, Quantidade, Preco)VALUES ('Panela', 1118,150.80);--RELACIONANDO A TABELA DA DIREITO COM O MAIOR PESOSELECT * FROM tb_categorias RIGHT JOIN tb_produtosON tb_categorias.Id = tb_produtos.Categoria_idWHERE Nome like '%n%'ORDER BY nome ASC;
+VALUES ('Maçã', 1000, '2022-03-07', 1.99, 1),
+('Banana', 1300, '2022-03-08', 5.00, 1),
+('Batata doce', 2000, '2022-03-09', 10.00, 3),
+('Alface', 300, '2022-03-10', 7.00, 2),
+('Cebola', 1020, '2022-03-08', 5.00, 3),
+('Ovo Branco', 1000, '2022-03-07', 15.00, 5),
+('Agrião', 1500, '2022-03-06', 3.00, 2),
+('Cenoura', 1800, '2022-03-09', 3.50, 3),
+('Pimenta', 1100, '2022-03-15', 10.00, 4),
+('Alecrim', 130, '2022-03-10', 5.00, 4),
+('Manga', 200, '2022-03-07', 5.49, 1),
+('Laranja', 3000, '2022-03-13', 10.00, 1);
+
+--RELACIONANDO AS TABELAS 
+
+SELECT * FROM tb_produtos INNER JOIN tb_categorias
+ON tb_categorias.Id = tb_produtos.Categoria_id;
+
+--RELACIONANDO A TABELA DA ESQUERDA COM O MAIOR PESO
+
+SELECT * FROM tb_categorias LEFT JOIN tb_produtos
+ON tb_categorias.Id = tb_produtos.Categoria_id;
+
+--INCLUINDO O DADOS NA TABELA
+
+INSERT INTO tb_produtos (Nome, Quantidade, Preco)
+VALUES ('Panela', 1118,150.80);
+
+--RELACIONANDO A TABELA DA DIREITO COM O MAIOR PESO
+
+SELECT * FROM tb_categorias RIGHT JOIN tb_produtos
+ON tb_categorias.Id = tb_produtos.Categoria_id
+WHERE Nome like '%n%'
+ORDER BY nome ASC;
+
+
